@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const buyTicketBtn = document.getElementById("buy-ticket");
     let currentMovie = null;
 
-    // Fetch and display all movies in sidebar
+    r
     function fetchMovies() {
-        fetch("http://localhost:3000/films")
+        fetch("http://localhost:3001/films")
             .then(res => res.json())
             .then(movies => {
                 filmsList.innerHTML = "";
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // Add a movie to the sidebar list
+    
     function addMovieToList(movie) {
         const li = document.createElement("li");
         li.classList.add("film", "item");
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         filmsList.appendChild(li);
     }
 
-    // Display movie details
+    
     function displayMovieDetails(movie) {
         currentMovie = movie;
         document.getElementById("poster").src = movie.poster;
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         buyTicketBtn.disabled = movie.tickets_sold >= movie.capacity;
     }
 
-    // Handle buying tickets
+    
     buyTicketBtn.addEventListener("click", () => {
         if (!currentMovie) return;
         let availableTickets = currentMovie.capacity - currentMovie.tickets_sold;
@@ -56,9 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Update tickets sold on the server
+    
     function updateTicketsSold(movie) {
-        fetch(`http://localhost:3000/films/${movie.id}`, {
+        fetch(`http://localhost:3001/films/${movie.id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ tickets_sold: movie.tickets_sold })
@@ -71,18 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Post a new ticket purchase to the server
+    
     function postNewTicket(filmId) {
-        fetch("http://localhost:3000/tickets", {
+        fetch("http://localhost:3001/tickets", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ film_id: filmId, number_of_tickets: 1 })
         });
     }
 
-    // Delete a movie from the server
+    
     function deleteMovie(movieId, listItem) {
-        fetch(`http://localhost:3000/films/${movieId}`, { method: "DELETE" })
+        fetch(`http://localhost:3001/films/${movieId}`, { method: "DELETE" })
             .then(() => listItem.remove());
     }
 
