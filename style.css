@@ -1,0 +1,99 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+
+header {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+
+main {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+aside {
+    width: 30%;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+
+ul#films {
+    list-style: none;
+    padding: 0;
+}
+
+ul#films li {
+    padding: 10px;
+    background-color: #e9ecef;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+ul#films li:hover {
+    background-color: #ced4da;
+}
+
+
+#movie-details {
+    flex-grow: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#poster {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.sold-out {
+    text-decoration: line-through;
+    color: red;
+    font-weight: bold;
+}
+
+.sold-out button {
+    background-color: gray !important;
+    cursor: not-allowed;
+}
