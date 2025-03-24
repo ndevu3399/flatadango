@@ -8,17 +8,15 @@ body {
 
 .container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     max-width: 1000px;
     margin: 20px auto;
     gap: 20px;
-    align-items: flex-start;
 }
 
 
 #films {
-    list-style: none;
+    list-style: auto;
     width: 250px;
     background: #222;
     border-radius: 8px;
@@ -29,15 +27,12 @@ body {
 }
 
 #films li {
-    padding: 12px;
-    border-bottom: 1px solid #444;
-    cursor: pointer;
-    transition: background 0.3s;
-    color: white; 
-    text-align: center;
-    border-radius: 5px;
-    font-size: 1rem;
-    margin-bottom: 5px;
+    width: 250px;
+    background: #222;
+    border-radius: 8px;
+    padding: 15px;
+    max-height: 500px;
+    overflow-y: auto;
 }
 
 #films li:hover {
@@ -51,19 +46,21 @@ body {
 }
 
 .movie-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     flex: 1;
     background: #222;
     padding: 20px;
     border-radius: 8px;
-    text-align: center;
-    max-width: 700px;
+    text-align: left;
 }
 
 .movie-details img {
-    width: 100%;
-    max-width: 320px;
+    width: 40%; 
+    max-width: 200px; 
     border-radius: 8px;
-    margin-bottom: 10px; 
+    margin-left: 20px; 
 }
 
 .movie-details h2 {
@@ -72,7 +69,7 @@ body {
 }
 
 .movie-details p {
-    margin: 5px 0;
+    margin: 9px 0;
     font-size: 1rem;
     color: #bbb;
 }
@@ -97,4 +94,31 @@ button.sold-out {
     background: gray;
     cursor: not-allowed;
     opacity: 0.7;
+}
+.main-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.movie-list{
+    width: 250px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.movie-list button {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 8px;
+}
+.movie-poster{
+    max-height: 100%;
+    height: auto;
+}
+
+#poster {
+    width: 40%;
+    max-width: 250px;
+    border-radius: 8px;
+    margin-left: 0px;
 }
