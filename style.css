@@ -97,3 +97,83 @@ button:hover {
     background-color: gray !important;
     cursor: not-allowed;
 }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    display: flex;
+    max-width: 1000px;
+    margin: 20px auto;
+    gap: 20px;
+  }
+  
+  #films {
+    list-style: none;
+    padding: 0;
+    width: 250px;
+    background: #222;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  #films li {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  #films li:hover {
+    background: #333;
+  }
+  
+  #films .sold-out {
+    color: gray;
+    text-decoration: line-through;
+    pointer-events: none;
+  }
+  
+  .movie-details {
+    flex: 1;
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .movie-details img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .movie-details h2 {
+    margin-top: 10px;
+  }
+  
+  .movie-details p {
+    margin: 5px 0;
+  }
+  
+  button {
+    background: #ff4500;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background: #e03e00;
+  }
+  
+  button.sold-out {
+    background: gray;
+    cursor: not-allowed;
+  }
+  
