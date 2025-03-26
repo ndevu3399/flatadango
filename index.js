@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const baseURL = "https://flatadango-71ws.onrender.com";
     const filmList = document.getElementById("films");
     const poster = document.getElementById("poster");
     const title = document.getElementById("title");
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentMovieId;
 
     function loadMovies() {
-        fetch("http://localhost:3000/films")
+        fetch(`${baseURL}/films`)
             .then(res => res.json())
             .then(movies => {
                 filmList.innerHTML = "";
@@ -34,11 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 loadMovieDetails(movies[0].id);
-            });
+            })
+            .catch(error => console.error("Error loading movies:", error));
     }
 
     function loadMovieDetails(movieId) {
-        fetch(`http://localhost:3000/films/${movieId}`)
+        fetch(`${baseURL}/films/${movieId}`)
             .then(res => res.json())
             .then(movie => {
                 currentMovieId = movie.id;
@@ -50,24 +52,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 ticketCount.textContent = availableTickets;
                 buyTicketButton.disabled = availableTickets === 0;
                 buyTicketButton.textContent = availableTickets === 0 ? "Sold Out" : "Buy Ticket";
-            });
+            })
+            .catch(error => console.error("Error loading movie details:", error));
     }
 
     buyTicketButton.addEventListener("click", () => {
         if (!currentMovieId) return;
 
-        fetch(`http://localhost:3000/films/${currentMovieId}`)
+        fetch(`${baseURL}/films/${currentMovieId}`)
             .then(res => res.json())
             .then(movie => {
                 if (movie.tickets_sold < movie.capacity) {
                     const updatedTicketsSold = movie.tickets_sold + 1;
 
-                    fetch(`http://localhost:3000/films/${currentMovieId}`, {
+                    fetch(`${baseURL}/films/${currentMovieId}`, {
                         method: "PATCH",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ tickets_sold: updatedTicketsSold })
                     })
-                    .then(() => loadMovieDetails(currentMovieId));
+                    .then(() => loadMovieDetails(currentMovieId))
+                    .catch(error => console.error("Error updating ticket count:", error));
                 }
             });
     });
@@ -75,18 +79,20 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteButton.addEventListener("click", () => {
         if (!currentMovieId) return;
 
-        fetch(`http://localhost:3000/films/${currentMovieId}`, {
+        fetch(`${baseURL}/films/${currentMovieId}`, {
             method: "DELETE"
         })
         .then(() => {
             document.querySelector(`li[data-id='${currentMovieId}']`).remove();
             loadMovies();
-        });
+        })
+        .catch(error => console.error("Error deleting movie:", error));
     });
 
     loadMovies();
 });
-fetch("http://localhost:3000/films")
+
+fetch("https://flatadango-71ws.onrender.com/films")
     .then(res => res.json())
     .then(movies => console.log("Fetched movies:", movies))
     .catch(error => console.error("Fetch error:", error));
