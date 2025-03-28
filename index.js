@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     .then(() => loadMovieDetails(currentMovieId));
                 }
             });
-    });
+    })
 
     deleteButton.addEventListener("click", () => {
         if (!currentMovieId) return;
